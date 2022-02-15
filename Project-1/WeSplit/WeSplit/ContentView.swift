@@ -14,6 +14,7 @@ struct ContentView: View {
     @FocusState private var amountIsFocused: Bool
     
     let tipPercentages = [10, 15, 20, 25, 0]
+    let currencyCode = Locale.current.currencyCode ?? "GBP"
     
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
@@ -53,12 +54,12 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "GBP"))
+                    Text(totalPerPerson, format: .currency(code: currencyCode))
                 } header: {
                     Text("Amount per person")
                 }
                 Section {
-                    Text(checkAmount + ((checkAmount / 100) * Double(tipPercentage)), format: .currency(code: Locale.current.currencyCode ?? "GBP"))
+                    Text(checkAmount + ((checkAmount / 100) * Double(tipPercentage)), format: .currency(code: currencyCode))
                 } header: {
                     Text("Total bill amount")
                 }
