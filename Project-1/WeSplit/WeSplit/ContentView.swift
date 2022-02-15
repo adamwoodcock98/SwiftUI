@@ -54,8 +54,16 @@ struct ContentView: View {
                 
                 Section {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "GBP"))
+                } header: {
+                    Text("Amount per person")
+                }
+                Section {
+                    Text(checkAmount + ((checkAmount / 100) * Double(tipPercentage)), format: .currency(code: Locale.current.currencyCode ?? "GBP"))
+                } header: {
+                    Text("Total bill amount")
                 }
             }
+            
             .navigationTitle("WeSplit")
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
